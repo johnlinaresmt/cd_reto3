@@ -54,4 +54,21 @@ public class ControladorReservas {
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicio.deleteReservation(reservationId);
     }
+    
+    @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return servicio.getReporteStatusReservaciones();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservas> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo){
+        return servicio.getReportesTiempoReservaciones(dateOne, dateTwo);
+    }
+    
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes(){
+        return servicio.servicioTopClientes();
+    
+    }
+    
 }
